@@ -4,7 +4,11 @@ bin/
 .settings
 .gradle
 build/
-src/com/AppLicationConstant.java
+src/com/AppConstants.java
+WebContent/WEB-INF/classes/com/AppConstants.java
 WebContent/WEB-INF/classes/com/AppLicationConstant.class
+src/com/AppLicationConstant.class
+
+
 
 

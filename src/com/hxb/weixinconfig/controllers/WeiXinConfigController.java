@@ -19,7 +19,6 @@ import net.paoding.rose.web.annotation.rest.Post;
 public class WeiXinConfigController {
 	
 	@Get("access")
-	@Post("access")
 	public Object firstAccess(Invocation inv) throws Exception
 	{
 		HttpServletRequest req = inv.getRequest();	
@@ -35,7 +34,7 @@ public class WeiXinConfigController {
 			return "@error";
 		}
 	}
-	@Get("access2")
+	@Post("access")
 	public Object getName()
 	{
 		return "@hexiaobo";
