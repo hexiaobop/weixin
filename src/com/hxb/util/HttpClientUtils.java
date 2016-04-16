@@ -119,7 +119,8 @@ public class HttpClientUtils {
 	 * @return 所代表远程资源的响应结果
 	 */
 	public static String sendPost(String baseURL, String path, String paramStr) {
-		String url = baseURL + "/" + path;
+	//	String url = baseURL + "/" + path;
+		String url = path;
 		PrintWriter out = null;
 		BufferedReader in = null;
 		String result = "";

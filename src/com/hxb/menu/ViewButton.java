@@ -7,8 +7,16 @@ public class ViewButton extends Button{
 	public String getUrl() {
 		return url;
 	}
+	
+
+	public ViewButton() {
+		super.setType("view");
+	}
+
 
 	public void setUrl(String url) {
 		this.url = url;
+		
 	}
+	
 }
