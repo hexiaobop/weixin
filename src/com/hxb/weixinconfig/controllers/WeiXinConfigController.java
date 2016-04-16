@@ -1,8 +1,9 @@
 package com.hxb.weixinconfig.controllers;
 
-import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
+
 import com.hxb.util.CheckUtil;
+
 import net.paoding.rose.web.Invocation;
 import net.paoding.rose.web.annotation.Path;
 import net.paoding.rose.web.annotation.rest.Get;

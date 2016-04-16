@@ -2,7 +2,6 @@ package com.hxb.weixinconfig.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.tomcat.jni.Status;
 import org.springframework.web.util.WebUtils;
 
 import com.hxb.util.Log4jUtil;

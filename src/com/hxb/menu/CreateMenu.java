@@ -1,19 +1,28 @@
 package com.hxb.menu;
 
-import javax.swing.text.View;
-
 import com.AppConstants;
 import com.google.gson.Gson;
 import com.hxb.util.HttpClientUtils;
 import com.hxb.weixinconfig.controllers.MyException;
 import com.hxb.weixinconfig.controllers.WeixinConfigUtil;
 
+/**
+ * 
+ * @des :工具类 自定义菜单创建
+ * @author hexiaobo
+ * @email absod0711@gmail.com
+ * @date 2016年4月17日
+ */
 public class CreateMenu {
+	/**
+	 * 
+	 * @return 自定义菜单
+	 */
 	public static Menu createMenu() {
 		Menu menu = new Menu();
 		String[][][] menuString = AppConstants.MENU;
 		// 循环创建菜单
-		Button[] buttonMenu = new Button[3];
+		Button[] buttonMenu = new Button[menuString.length];
 		for (int i = 0; i < menuString.length; i++) {
 			Button button = new Button();
 			String[][] firstMenu = menuString[i];
@@ -42,6 +51,11 @@ public class CreateMenu {
 
 	}
 
+	/**
+	 * 测试
+	 * @param args
+	 * @throws MyException
+	 */
 	public static void main(String[] args) throws MyException {
 		String token = WeixinConfigUtil.getAccessToken();
 		String url = AppConstants.CREATE_MENU_URL.replace("ACCESS_TOKEN", token);
@@ -54,6 +68,7 @@ public class CreateMenu {
 	}
 
 	/**
+	 * 通过传入属性创建按钮
 	 * 
 	 * @param buttonType
 	 * @param buttonName
