@@ -1,4 +1,4 @@
-package com.hxb.weixinconfig.controllers;
+package com.hxb.util;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -13,8 +13,6 @@ import org.apache.log4j.Logger;
 import com.AppConstants;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import com.hxb.util.HttpClientUtils;
-import com.hxb.util.Log4jUtil;
 
 /**
  * 

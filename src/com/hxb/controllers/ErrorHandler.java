@@ -1,10 +1,11 @@
-package com.hxb.weixinconfig.controllers;
+package com.hxb.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.util.WebUtils;
 
 import com.hxb.util.Log4jUtil;
+import com.hxb.util.MyException;
 import com.hxb.util.WeixinRequestUtil;
 
 import net.paoding.rose.web.ControllerErrorHandler;

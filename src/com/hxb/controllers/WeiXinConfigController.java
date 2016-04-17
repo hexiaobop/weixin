@@ -1,4 +1,4 @@
-package com.hxb.weixinconfig.controllers;
+package com.hxb.controllers;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -40,5 +40,4 @@ public class WeiXinConfigController {
 	{
 		return "@hexiaobo";
 	}
-
 }

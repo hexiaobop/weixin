@@ -3,8 +3,8 @@ package com.hxb.menu;
 import com.AppConstants;
 import com.google.gson.Gson;
 import com.hxb.util.HttpClientUtils;
-import com.hxb.weixinconfig.controllers.MyException;
-import com.hxb.weixinconfig.controllers.WeixinConfigUtil;
+import com.hxb.util.MyException;
+import com.hxb.util.WeixinConfigUtil;
 
 /**
  * 

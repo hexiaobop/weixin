@@ -1,4 +1,4 @@
-package com.hxb.weixinconfig.controllers;
+package com.hxb.util;
 
 public class MyException extends Exception {
 
