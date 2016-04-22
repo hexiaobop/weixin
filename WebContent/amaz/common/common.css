@@ -1,0 +1,67 @@
+.center {
+	text-align: center;
+	vertical-align: middle;
+}
+
+.right {
+	text-align: right;
+	padding: 4px;
+	vertical-align: middle;
+}
+
+#example tbody tr td {
+	vertical-align: middle;
+}
+
+.Table {
+	border-bottom: 0;
+	border-left: 0;
+	border-top: 0;
+	border-right: 0;
+	margin-left: 2px;
+	margin-top: 2px;
+	width: 98%;
+}
+
+.Table tr {
+	border-bottom: 0;
+	border-left: 0;
+	border-top: 0;
+	border-right: 0;
+	text-align: left;
+}
+
+.Table tr td {
+	border-bottom: 1px dashed #eee;
+	border-left: 0;
+	border-top: 0;
+	border-right: 0;
+	text-align: left;
+}
+
+//
+.Table tr td div { //
+	max-height: 180px; //
+	min-height: 40px; //
+	overflow-y: scroll;
+	//
+}
+
+.dataTables_filter {
+	margin-top: 10px
+}
+
+.btn {
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+}
+
+.dataTables_paginate {
+	margin-top: -10px;
+}
+
+//
+.table th, .table td { //
+	text-align: center;
+	//
+}

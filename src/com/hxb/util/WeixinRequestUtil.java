@@ -37,6 +37,21 @@ public class WeixinRequestUtil {
 		}
 
 	}
+	/**
+	 * 返回list
+	 * @param data
+	 * @return
+	 */
+	public static String succAjax(Object data) {
+		try {
+			return "@" + gson.toJson(data);
+		} catch (Exception exp) {
+			exp.printStackTrace();
+			Log4jUtil.exception(exp);
+			return "@返回错误";
+		}
+
+	}
 
 	public static String error(int errno, String errmsg) {
 		try {
