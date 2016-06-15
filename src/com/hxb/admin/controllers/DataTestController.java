@@ -3,7 +3,7 @@ package com.hxb.admin.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.hxb.admin.model.DataTest;
+import com.hxb.message.model.DataTest;
 import com.hxb.util.DataTableUtil;
 import com.hxb.util.DataTableUtil.DataTableResponseModel;
 import com.hxb.util.WeixinRequestUtil;

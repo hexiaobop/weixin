@@ -1,6 +1,8 @@
 package com.hxb.util;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonParser;
 import com.hxb.util.model.ResponseModel;
 
 /**
@@ -12,8 +14,8 @@ import com.hxb.util.model.ResponseModel;
  */
 public class WeixinRequestUtil {
 
-	private static Gson gson = new Gson();
-
+	private static Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create(); 
+	
 	public static String succ() {
 		return succ("");
 	}

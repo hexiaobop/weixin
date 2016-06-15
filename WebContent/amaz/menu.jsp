@@ -8,33 +8,33 @@
         <li class="admin-parent">
           <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav1'}"><span class="am-icon-file"></span> 活动管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list admin-sidebar-sub am-collapse" id="collapse-nav1">
-            <li><a href="admin-user.html" class="am-cf"><span class="am-icon-check"></span> 个人资料<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
-            <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 帮助页</a></li>
-            <li><a href="admin-gallery.html"><span class="am-icon-th"></span> 相册页面<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
-            <li><a href="admin-log.html"><span class="am-icon-calendar"></span> 系统日志</a></li>
-            <li><a href="admin-404.html"><span class="am-icon-bug"></span> 404</a></li>
+            <li><a href="/biyesheji/admin/active/list" class="am-cf"><span class="am-icon-check"></span> 活动入口管理<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+           <li><a href="/biyesheji/admin/activetwo/list"><span class="am-icon-puzzle-piece"></span> 发卷活动</a></li>
+            <li><a href="/biyesheji/admin/activetwo/add"><span class="am-icon-puzzle-piece"></span> 新增发卷活动</a></li>
+           <!--  <li><a href="admin-log.html"><span class="am-icon-calendar"></span> 系统日志</a></li>
+            <li><a href="admin-404.html"><span class="am-icon-bug"></span> 404</a></li> -->
           </ul>
         </li>
         
        <li class="admin-parent">
           <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav2'}"><span class="am-icon-file"></span> 用户管理 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list admin-sidebar-sub am-collapse" id="collapse-nav2">
-            <li><a href="admin-user.html" class="am-cf"><span class="am-icon-check"></span> 个人资料<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
-            <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 帮助页</a></li>
+            <li><a href="/biyesheji/admin/user/list" class="am-cf"><span class="am-icon-check"></span>用户列表<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+<!--             <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 帮助页</a></li>
             <li><a href="admin-gallery.html"><span class="am-icon-th"></span> 相册页面<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
             <li><a href="admin-log.html"><span class="am-icon-calendar"></span> 系统日志</a></li>
-            <li><a href="admin-404.html"><span class="am-icon-bug"></span> 404</a></li>
+            <li><a href="admin-404.html"><span class="am-icon-bug"></span> 404</a></li> -->
           </ul>
         </li>
         
          <li class="admin-parent">
-          <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-file"></span> 后台相关 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
+          <a class="am-cf am-collapsed" data-am-collapse="{target: '#collapse-nav3'}"><span class="am-icon-file"></span>资源相关 <span class="am-icon-angle-right am-fr am-margin-right"></span></a>
           <ul class="am-list admin-sidebar-sub am-collapse" id="collapse-nav3">
-            <li><a href="admin-user.html" class="am-cf"><span class="am-icon-check"></span> 个人资料<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
-            <li><a href="admin-help.html"><span class="am-icon-puzzle-piece"></span> 帮助页</a></li>
-            <li><a href="admin-gallery.html"><span class="am-icon-th"></span> 相册页面<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
+            <li><a href="/biyesheji/admin/image/list" class="am-cf"><span class="am-icon-check"></span> 素材管理<span class="am-icon-star am-fr am-margin-right admin-icon-yellow"></span></a></li>
+            <li><a href="/biyesheji/admin/card/list"><span class="am-icon-puzzle-piece"></span> 卡卷管理</a></li>
+<!--             <li><a href="admin-gallery.html"><span class="am-icon-th"></span> 相册页面<span class="am-badge am-badge-secondary am-margin-right am-fr">24</span></a></li>
             <li><a href="admin-log.html"><span class="am-icon-calendar"></span> 系统日志</a></li>
-            <li><a href="admin-404.html"><span class="am-icon-bug"></span> 404</a></li>
+            <li><a href="admin-404.html"><span class="am-icon-bug"></span> 404</a></li> -->
           </ul>
         </li>
         

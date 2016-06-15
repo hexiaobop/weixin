@@ -16,14 +16,50 @@
 	http://www.springframework.org/schema/aop/spring-aop-2.5.xsd"
 	default-autowire="byName" default-lazy-init="false">
 
+	<context:annotation-config />
 
-	<!-- 启用事务注解功能 -->
-	<tx:annotation-driven transaction-manager="transactionManager"
-		proxy-target-class="true" />
-
+	<context:component-scan base-package="com.hxb" />
+	<bean id="beanFactory" class="com.hxb.util.BeanFactory" lazy-init="false"></bean>
+	<!-- <bean id="articlesUtilsService" class="com.hxb.message.ArticlesUtilsService"></bean> -->
 
 	<!-- interceptor -->
 	<bean class="com.hxb.controllers.Interceptor.IsLoginInterceptor" />
 
+	<bean id="jade.dataSource.com.hxb" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	 	<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/weixin?useUnicode=true&amp;characterEncoding=utf8"/>
+        <property name="username" value="root"/>
+        <property name="password" value=""/> 
+		<!-- below param -->
+		<property name="initialSize">
+			<value>1</value>
+		</property>
+		<property name="minIdle">
+			<value>1</value>
+		</property>
+		<property name="maxActive">
+			<value>10</value>
+		</property>
+		<property name="maxIdle">
+			<value>1</value>
+		</property>
+		<property name="testOnBorrow">
+			<value>true</value>
+		</property>
+		<property name="testOnReturn">
+			<value>false</value>
+		</property>
+		<property name="testWhileIdle">
+			<value>true</value>
+		</property>
+		<!-- 5 mins to check one time -->
+		<property name="timeBetweenEvictionRunsMillis">
+			<value>300000</value>
+		</property>
+		<!-- 30 mins Idel, disable -->
+		<property name="minEvictableIdleTimeMillis">
+			<value>1800000</value>
+		</property>
+	</bean>
 
 </beans>

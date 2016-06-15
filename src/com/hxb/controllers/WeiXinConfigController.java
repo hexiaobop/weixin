@@ -1,43 +1,48 @@
 package com.hxb.controllers;
 
-import javax.servlet.http.HttpServletRequest;
+import java.util.Map;
 
-import com.hxb.util.CheckUtil;
+import org.apache.log4j.Logger;
+
+import com.google.gson.Gson;
+import com.hxb.util.Log4jUtil;
+import com.hxb.util.MyException;
+import com.hxb.util.WeixinConfigUtil;
 
 import net.paoding.rose.web.Invocation;
+import net.paoding.rose.web.annotation.Param;
 import net.paoding.rose.web.annotation.Path;
 import net.paoding.rose.web.annotation.rest.Get;
-import net.paoding.rose.web.annotation.rest.Post;
 
 /**
+ * 获取微信config
  * 
- * @des    : 微信首次验证验证，微信各种token的获取
- * @author hexiaobo 
- * @email  absod0711@gmail.com
- * @date   2016年3月26日
+ * @author hxb
+ *
+ * @date 2016年2月18日
  */
-@Path("home")
-public class WeiXinConfigController {
-	
-	@Get("access")
-	public Object firstAccess(Invocation inv) throws Exception
-	{
-		HttpServletRequest req = inv.getRequest();	
-		String signature = req.getParameter("signature");
-		String timestamp = req.getParameter("timestamp");
-		String nonce = req.getParameter("nonce");
-		String echostr = req.getParameter("echostr");				
-		if(CheckUtil.checkSignature(signature, timestamp, nonce)){
-			return "@"+echostr;
+@Path("wxapi")
+public class WeixinConfigController {
+	private final static Logger appLog = Log4jUtil.appLog;
+	private final static Logger sysLog = Log4jUtil.sysLog;
+
+	@Get("wxconfig")
+	public Object getWeixinConfig(Invocation inv) throws MyException {
+		appLog.info("WeixinConfigController,getWeixinConfig");
+		// 获 取refer加密试用
+		String referURL = inv.getRequest().getHeader("Referer");
+		if (referURL == null) {
+			sysLog.warn("WeixinConfigController,getWeixinConfig,referURl:" + referURL);
+			referURL = "";
 		}
-		else
-		{
-			return "@error";
-		}
+		Map<String, String> configMap = WeixinConfigUtil.getConfig(referURL);
+		return "@" + (new Gson().toJson(configMap));
 	}
-	@Post("access")
-	public Object getName()
-	{
-		return "@hexiaobo";
+
+	@Get("wxcardconfig")
+	public Object getWeixinCardConfig(@Param("cardId") String cardId) throws MyException {
+		Map<String, String> configMap = WeixinConfigUtil.getCardConfig(cardId);
+		return "@" + (new Gson().toJson(configMap));
 	}
+
 }

@@ -2,7 +2,7 @@
 
 public class TextMessage extends BaseMessage{
 	private String Content;
-	private String MsgId;
+	private String msgId;
 	
 	public String getContent() {
 		return Content;
@@ -11,9 +11,9 @@ public class TextMessage extends BaseMessage{
 		Content = content;
 	}
 	public String getMsgId() {
-		return MsgId;
+		return msgId;
 	}
 	public void setMsgId(String msgId) {
-		MsgId = msgId;
+		this.msgId = msgId;
 	}
 }

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>最近活动</title>
+	<style>
+		*{ padding: 0; margin: 0;}
+		body{ width: 1000px; font-family: "微软雅黑"; font-size: 42px; margin: 0 auto;}
+		.adlist{width: 90%; margin: 30px auto ; border: 1px solid #808080;}
+		.adlist .title{ margin-left: 10%; font-size: 1.2em; font-weight: 900; text-align: left;}
+		.adlist .title span{ float: right; font-size: 0.6em; font-weight: 100; margin-right: 10%; margin-top: 1em;}
+		.adlist img{ width: 80%; height:400px;display: block; margin: 15px auto; background-color: red;}
+		.adlist .text{  margin-left: 10%;font-size: 0.8em;}
+	</style>
+	</head>
+	<body>
+		<div id="top">
+		</div>
+	</body>
+	<script type="text/javascript" src="js/query.js" ></script>
+	<script>
+
+		ajax("http://hehelianxi.ngrok.cc/biyesheji/h5/active/list/",function(data){
+//		ajax("data/data.json",function(data){
+			var dataObj = JSON.parse(data);
+			var dataArray = dataObj.data;
+//			var dataArray = dataObj.aaData;
+			for(var i = 0;i<dataArray.length ;i++){
+				add(dataArray[i]);
+			}
+		})
+		function add(obj){
+			var _listItem = document.createElement("div");
+			_listItem.onclick  =  function(){
+				window.location = "new_file.html?id="+obj.id;
+			} 
+			_listItem.className = "adlist";
+			var _title = document.createElement("p");
+			_title.className = "title";
+			_title.innerHTML = obj.activeType+"<span>某某商城</span>";
+			var _img = document.createElement("img");
+			_img.setAttribute("src",obj.imageUrl);
+			var _text = document.createElement("p");
+			_text.className = "text";
+			_text.innerHTML = obj.activeDes;
+			_listItem.appendChild(_title);
+			_listItem.appendChild(_img);
+			_listItem.appendChild(_text);
+			document.body.appendChild(_listItem);
+		}
+	</script>
+</html>

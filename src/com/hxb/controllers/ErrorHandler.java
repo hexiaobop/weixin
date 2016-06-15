@@ -22,6 +22,7 @@ public class ErrorHandler implements ControllerErrorHandler {
 
 	public Object onError(Invocation inv, MyException ex) throws Throwable {
 		MyException me = (MyException) ex;
+		ex.printStackTrace();
 		//对于MochaException,清除Servlet Error.
 		HttpServletRequest request = inv.getRequest();
 		/***
@@ -42,6 +43,7 @@ public class ErrorHandler implements ControllerErrorHandler {
 		Log4jUtil.exception((Exception) ex);
 		HttpServletRequest request = inv.getRequest();
 		WebUtils.clearErrorRequestAttributes(request);
+		ex.printStackTrace();
 		return WeixinRequestUtil.error(500, "服务器错误");
 	}
 }

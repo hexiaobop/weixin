@@ -7,6 +7,7 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLConnection;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.HttpClient;
@@ -16,6 +17,9 @@ import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
 import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.util.EntityUtils;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
+
 /****
  * 
  * @author wangqingsong
@@ -23,7 +27,18 @@ import org.apache.http.util.EntityUtils;
  */
 @SuppressWarnings("deprecation")
 public class HttpClientUtils {
+public static final String WEIXIN_USER_AGENT   = "Mozilla/5.0 (Windows; U; Windows NT 5.2) AppleWebKit/525.13 (KHTML, like Gecko) Chrome/0.2.149.27 Safari/525.13";
 	
+	/***
+	 * com.yunyao.mochaweb.util.HttpClientUtils.getContent(HttpClientUtils.java:46)
+	 * Invalid use of BasicClientConnManager: connection still allocated.
+	 * Make sure to release the connection before allocating another one.
+	 * 
+	 * BUG解决: 在多线程的情况下, 请求我查查的HttpClient会出现上面的错误.
+	 * 解决方案:
+	 * new DefaultHttpClient(new ThreadSafeClientConnManager());
+	 */
+	private static HttpClient httpclient_weixin   = new DefaultHttpClient(new ThreadSafeClientConnManager());
 	/***
 	 * com.yunyao.mochaweb.util.HttpClientUtils.getContent(HttpClientUtils.java:46)
 	 * Invalid use of BasicClientConnManager: connection still allocated.
@@ -36,6 +51,7 @@ public class HttpClientUtils {
 	private static final String ERROR    = "{\"errno\":\"3\"}";
 	private static HttpClient httpclient_me = new DefaultHttpClient(new ThreadSafeClientConnManager());
 	private static HttpClient httpclient_wochacha = new DefaultHttpClient(new ThreadSafeClientConnManager());
+	private static JsonParser jsonParser = new JsonParser();
 	
 	
 	private static HttpClient httpclient_default  = new DefaultHttpClient(new ThreadSafeClientConnManager());
@@ -97,7 +113,7 @@ public class HttpClientUtils {
             // 请求成功 
             if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) { 
                 // 取得返回的html;
-                return EntityUtils.toString(httpResponse.getEntity());  
+                return EntityUtils.toString(httpResponse.getEntity(),"UTF-8");  
             }
         } catch (Exception exp) {
         	exp.printStackTrace();
@@ -133,6 +149,7 @@ public class HttpClientUtils {
 			conn.setRequestProperty("connection", "Keep-Alive");
 			conn.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)");
 			conn.setRequestProperty("application", "x-www-form-urlencoded");
+			//conn.setRequestProperty("Accept-Charset", "UTF-8");
 			conn.setDoOutput(true);
 			conn.setDoInput(true);
 			// 获取URLConnection对象对应的输出流
@@ -169,5 +186,36 @@ public class HttpClientUtils {
 	public static String urlEncode(String content) throws UnsupportedEncodingException {
 		return java.net.URLEncoder.encode(content, "utf-8");
 	}
-
+	public static String getWeixinContent(String host, String url){
+		// HttpGet连接对象  
+        HttpGet httpRequest = new HttpGet(url);  
+        httpRequest.setHeader("Host", host);
+        httpRequest.setHeader("User-Agent", WEIXIN_USER_AGENT);
+        httpRequest.setHeader("Accept", "*/*");
+        httpRequest.setHeader("Referer", url);
+        httpRequest.setHeader("Connection", "keep-alive");
+        try { 
+            // 请求HttpClient，取得HttpResponse  
+            HttpResponse httpResponse = httpclient_weixin.execute(httpRequest);  
+            // 请求成功  
+            if (httpResponse.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {  
+                // 取得返回的字符串  
+                String strResult = EntityUtils.toString(httpResponse.getEntity());  
+                return strResult;
+            } else {  
+            	return null;
+            } 
+        } catch (Exception exp) {  
+        	exp.printStackTrace();
+        	Log4jUtil.exception(exp);
+        } finally {
+        	httpRequest.releaseConnection();
+        }
+        return null;
+	}
+	public static JsonElement getJsonObject(String url)
+	{
+		String resultString = getHtml(url);
+		return jsonParser.parse(resultString);
+	}
 }

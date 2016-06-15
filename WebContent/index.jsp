@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-这是微信
+<image src="${pageContext.request.contextPath}/code.jpg">
 </body>
 </html>

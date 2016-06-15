@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	<style>
+		*{ padding: 0; margin: 0;}
+		body{ width: 100%; font-family: "微软雅黑"; font-size: 42px; margin: 0 auto;}
+		.newdiv{width: 90%; margin: 30px auto ; border: 1px solid #808080;}
+		.newdiv .title{ margin-left: 10%; font-size: 1.2em; font-weight: 900; text-align: left;}
+		.newdiv .title span{ float: right; font-size: 0.6em; font-weight: 100; margin-right: 10%; margin-top: 1em;}
+		.newdiv img{ width: 80%; height:400px;display: block; margin: 15px auto; background-color: red;}
+		.newdiv .content{ width: 80%;  margin:0 auto;font-size: 0.6em;}
+		button{font-size: 1.2em; padding: 25px; display: block; margin: 0 auto; margin-bottom: 40px;}
+	</style>
+	</head>
+	<body>
+	</body>
+	<script type="text/javascript" src="js/query.js" ></script>
+	<script>
+	window.onload = function(){
+		var theUrl = window.location.toString();
+		var dataId = theUrl.split("=")[1];
+		ajax("http://hehelianxi.ngrok.cc/biyesheji/h5/active/list/info?id="+dataId,function(data){
+			var dataObj = JSON.parse(data);
+			var dataArray = dataObj.data;
+			fuck(dataArray[0]);
+			
+		});
+		
+	}
+	function fuck(obj){
+		var _div = document.createElement("div");
+		_div.className = "newdiv";
+		var _title = document.createElement("p");
+		_title.className = "title";
+		_title.innerHTML = obj.activeTitle+"<span>某某商城</span>";
+		var _content = document.createElement("div");
+		_content.className = "content";
+		_content.innerHTML = obj.activeDes;
+		var _btn = document.createElement("button");
+		_btn.innerHTML = "领优惠卷";
+		_btn.onclick = function(){
+			window.location = "http://hehelianxi.ngrok.cc/biyesheji/h5/active/card?cardId="+obj.cardId;
+		}
+		_div.appendChild(_title);
+		_div.appendChild(_content);
+		_div.appendChild(_btn);
+		document.body.appendChild(_div);
+	}
+	</script>
+</html>

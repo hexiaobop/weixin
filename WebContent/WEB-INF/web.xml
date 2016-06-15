@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	id="WebApp_ID" version="3.0">
 	<display-name>biyesheji</display-name>
-	<filter>
+<!-- 	<filter>
 	<filter-name>myFilter</filter-name>
 	<filter-class>com.hxb.shiro.ShiroFilterProxy</filter-class>
 	</filter>
@@ -13,7 +13,7 @@
 		<url-pattern>/view/*</url-pattern>
 
 		
-	</filter-mapping>
+	</filter-mapping> -->
 	<filter>
 		<filter-name>roseFilter</filter-name>
 		<filter-class>net.paoding.rose.RoseFilter</filter-class>

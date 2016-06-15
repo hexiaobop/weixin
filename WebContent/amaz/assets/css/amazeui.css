@@ -1643,7 +1643,7 @@ pre code {
   cursor: pointer;
   outline: none;
   -webkit-appearance: none;
-  -webkit-user-select: none;
+/*   -webkit-user-select: none; */
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
